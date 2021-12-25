@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-one
+spec:
+  selector:
+    matchLabels:
+      app: micro-one
+  template:
+    metadata:
+      labels:
+        app: micro-one
+    spec:
+      containers:
+      - image: cleancodeid/laravel-micro:latest
+        name: micro-one
+        ports:
+        - containerPort: 8080
