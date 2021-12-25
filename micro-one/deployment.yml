@@ -12,7 +12,7 @@ spec:
         app: micro-one
     spec:
       containers:
-      - image: cleancodeid/laravel-micro:latest
+      - image: yohang/go-foo:latest
         name: micro-one
         ports:
         - containerPort: 8080
