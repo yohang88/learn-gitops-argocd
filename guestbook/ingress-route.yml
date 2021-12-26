@@ -8,8 +8,19 @@ spec:
   routes:
     - kind: Rule
       match: PathPrefix(`/guestbook`)
+      middlewares:              
+      - name: guestbook-ui-stripprefix
       services:
-        - name: guestbook-ui
-          port: 80
+      - name: guestbook-ui
+        port: 80
   tls:
     certResolver: default
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: guestbook-ui-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /guestbook
