@@ -7,7 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: PathPrefix(`/micro-two`)
+      match: Host(`argocd-cluster1.digitalservice.id`) && PathPrefix(`/micro-two`)
       middlewares:              
       - name: micro-two-stripprefix
       services:
