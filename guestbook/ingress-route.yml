@@ -7,7 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Path(`/guestbook`)
+      match: PathPrefix(`/guestbook`)
       services:
         - name: guestbook-ui
           port: 80
