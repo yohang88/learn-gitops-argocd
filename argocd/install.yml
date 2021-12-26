@@ -3381,10 +3381,11 @@ spec:
       containers:
       - command:
         - argocd-server
-        - --repo-server
-        - argocd-repo-server:8081
-        - --rootpath
-        - /argo-cd
+        - --insecure
+        # - --repo-server
+        # - argocd-repo-server:8081
+        # - --rootpath
+        # - /argo-cd
         env:
         - name: ARGOCD_SERVER_INSECURE
           valueFrom:
