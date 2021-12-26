@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-two
+spec:
+  selector:
+    matchLabels:
+      app: micro-two
+  template:
+    metadata:
+      labels:
+        app: micro-two
+    spec:
+      containers:
+      - image: yohang/go-foo:latest
+        name: micro-two
+        ports:
+        - containerPort: 8080
