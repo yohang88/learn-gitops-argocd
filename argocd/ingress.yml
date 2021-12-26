@@ -9,11 +9,12 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/add-base-url : "true"
 spec:
   rules:
   - http:
       paths:
-      - path: /argocd/
+      - path: /argocd
         pathType: Prefix
         backend:
           service: 
