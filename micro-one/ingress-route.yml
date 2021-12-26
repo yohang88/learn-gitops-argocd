@@ -1,0 +1,26 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: micro-one-ingressroute
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: PathPrefix(`/micro-one`)
+      middlewares:              
+      - name: micro-one-stripprefix
+      services:
+      - name: micro-one
+        port: 80
+  tls:
+    certResolver: default
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: micro-one-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /micro-one
