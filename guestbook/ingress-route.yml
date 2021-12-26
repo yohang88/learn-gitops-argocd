@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: guestbook-ui-ingressroute
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Path(`/guestbook`)
+      services:
+        - name: guestbook-ui
+          port: 80
+  tls:
+    certResolver: default
