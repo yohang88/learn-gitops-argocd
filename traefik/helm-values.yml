@@ -1,0 +1,13 @@
+logs:
+  general:
+    level: DEBUG
+  access:
+    enabled: true
+
+ingressRoute:
+  dashboard:
+    enabled: false
+
+providers:
+  kubernetesCRD:
+    allowCrossNamespace: true
