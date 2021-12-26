@@ -13,5 +13,7 @@ kubectl apply -n argocd -f argocd/install.yml
 
 ### Traefik Ingress Controller
 ```
+kubectl create namespace traefik
+
 helm install --namespace=traefik --values=traefik/helm-values.yml traefik traefik/traefik
 ```
