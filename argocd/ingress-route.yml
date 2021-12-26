@@ -8,13 +8,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argocd.example.com`)
+      match: Host(`argocd.digitalservice.id`)
       priority: 10
       services:
         - name: argocd-server
           port: 80
     - kind: Rule
-      match: Host(`argocd.example.com`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.digitalservice.id`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server
@@ -22,4 +22,6 @@ spec:
           scheme: h2c
   tls:
     certResolver: default
-    options: {}
+    options:
+      name: opt
+      namespace: default
