@@ -1,0 +1,26 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: guestbook-ui-ingressroute
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: {{ .Values.ingressRoute.host }} && PathPrefix(`/guestbook`)
+      middlewares:              
+      - name: guestbook-ui-stripprefix
+      services:
+      - name: guestbook-ui
+        port: 80
+  tls:
+    certResolver: letsencrypt
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: guestbook-ui-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /guestbook
