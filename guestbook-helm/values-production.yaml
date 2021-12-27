@@ -4,3 +4,7 @@
 
 ingressRoute:
   host: Host(`argocd-cluster1.digitalservice.id`)
+
+image:
+  repository: gcr.io/heptio-images/ks-guestbook-demo
+  tag: 0.1
