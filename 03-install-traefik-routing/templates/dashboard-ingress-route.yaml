@@ -1,15 +1,15 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: traefik-metrics-ingressroute
+  name: traefik-dashboard-ingressroute
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`argocd-cluster2-traefik.digitalservice.id`) && PathPrefix(`/metrics`)
+    - match: {{ .Values.ingressRoute.host }} && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
       services:
-      - name: prometheus@internal
+      - name: api@internal
         kind: TraefikService
   tls:
     certResolver: letsencrypt

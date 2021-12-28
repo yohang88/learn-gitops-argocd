@@ -6,14 +6,25 @@
 
 ### Install Argo CD
 ```
-kubectl create namespace argocd
+$ cd 01-install-argocd
 
-kubectl apply -n argocd -f argocd/install.yml
+$ kubectl create namespace argocd
+
+$ kubectl apply -n argocd -f install.yaml
 ```
 
-### Traefik Ingress Controller
+### Install Traefik Ingress Controller
 ```
-kubectl create namespace traefik
+$ cd 02-install-traefik
 
-helm install --namespace=traefik --values=traefik/helm-values.yml traefik traefik/traefik
+$ kubectl create namespace traefik
+
+$ helm install --namespace=traefik --values=values.yaml traefik traefik/traefik
+```
+
+### Configure Traefik Routing (ArgoCD, Traefik Dashboard, Traefik Metrics)
+```
+$ cd 03-install-traefik-routing
+
+$ helm install --namespace=traefik --values=values-production.yaml traefik-routing-helm .
 ```
